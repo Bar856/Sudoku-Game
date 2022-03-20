@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Sudoku Board</title>
+      <link rel="stylesheet" href="boardStyle.css">
+      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+      <script src="scriptV5.js"></script>
+    </head>
+    <body>
+      <div class="topContainer">
+        <h1 style="color: white;">You made it! Wanna try again? ;)</h1>
+        <button id="startBtn" style="color: green;" onclick="genarateBoard()">Start Game!</button>
+        <button onclick="checkForErrors()">Check For Errors</button>
+        <button onclick="finishButton()">Finish</button>
+        <label id="difLable" for="Difficult">Difficult:</label>
+        <select name="Difficult" id="difficult">
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+          <option value="extreme">Extreme</option>
+        </select>
+        <div id="timerZone" hidden>
+          <label style="display: inline;" id="timerLabel" for="timer" >Timer:</label>
+          <div style="display: inline; color: white;" id='timer' > </div>
+        </div>
+      </div>
+      <div class="boardContainer">
+        <table id="grid" hidden>
+          <tr>
+            <td><input maxlength="1" id="cell-0"  class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-1"  class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-2"  class="cells" type="text"></td>
+            
+            <td><input maxlength="1" id="cell-3"  class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-4"  class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-5"  class="cells" type="text"></td>
+            
+            <td><input maxlength="1" id="cell-6"  class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-7"  class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-8"  class="cells" type="text"></td>
+          </tr>
+
+          <tr>
+            <td><input maxlength="1" id="cell-9"  class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-10" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-11" class="cells" type="text"></td>
+            
+            <td><input maxlength="1" id="cell-12" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-13" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-14" class="cells" type="text"></td>
+            
+            <td><input maxlength="1" id="cell-15" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-16" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-17" class="cells" type="text"></td>
+          </tr>
+
+          <tr>          
+            <td><input maxlength="1" id="cell-18" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-19" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-20" class="cells" type="text"></td>
+            
+            <td><input maxlength="1" id="cell-21" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-22" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-23" class="cells" type="text"></td>
+            
+            <td><input maxlength="1" id="cell-24" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-25" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-26" class="cells" type="text"></td>
+          </tr>
+
+          <tr>          
+            <td><input maxlength="1" id="cell-27" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-28" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-29" class="cells" type="text"></td>
+            
+            <td><input maxlength="1" id="cell-30" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-31" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-32" class="cells" type="text"></td>
+            
+            <td><input maxlength="1" id="cell-33" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-34" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-35" class="cells" type="text"></td>
+          </tr>
+
+          <tr>          
+            <td><input maxlength="1" id="cell-36" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-37" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-38" class="cells" type="text"></td>
+            
+            <td><input maxlength="1" id="cell-39" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-40" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-41" class="cells" type="text"></td>
+            
+            <td><input maxlength="1" id="cell-42" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-43" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-44" class="cells" type="text"></td>
+          </tr>
+
+          <tr>          
+            <td><input maxlength="1" id="cell-45" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-46" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-47" class="cells" type="text"></td>
+            
+            <td><input maxlength="1" id="cell-48" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-49" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-50" class="cells" type="text"></td>
+            
+            <td><input maxlength="1" id="cell-51" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-52" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-53" class="cells" type="text"></td>
+          </tr>
+
+          <tr>          
+            <td><input maxlength="1" id="cell-54" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-55" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-56" class="cells" type="text"></td>
+            
+            <td><input maxlength="1" id="cell-57" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-58" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-59" class="cells" type="text"></td>
+            
+            <td><input maxlength="1" id="cell-60" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-61" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-62" class="cells" type="text"></td>
+          </tr>
+
+          <tr>          
+            <td><input maxlength="1" id="cell-63" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-64" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-65" class="cells" type="text"></td>
+            
+            <td><input maxlength="1" id="cell-66" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-67" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-68" class="cells" type="text"></td>
+            
+            <td><input maxlength="1" id="cell-69" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-70" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-71" class="cells" type="text"></td>
+          </tr>
+
+          <tr>          
+            <td><input maxlength="1" id="cell-72" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-73" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-74" class="cells" type="text"></td>
+            
+            <td><input maxlength="1" id="cell-75" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-76" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-77" class="cells" type="text"></td>
+            
+            <td><input maxlength="1" id="cell-78" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-79" class="cells" type="text"></td>
+            <td><input maxlength="1" id="cell-80" class="cells" type="text"></td>
+          </tr>
+        </table>
+      </div>
+      <audio controls autoplay loop hidden> 
+        <source src="music.mp3" type="audio/mpeg">
+      </audio>
+    </body>
+    <footer id="copyrights">
+      Made by Bar & Yair
+    </footer>
+</html>
